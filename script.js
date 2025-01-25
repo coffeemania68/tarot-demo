@@ -4,7 +4,27 @@ const tarotCardsData = [
         image: "images/tarot-cards/the-fool.jpg",
         interpretation: "새로운 시작, 순수함, 가능성, 모험, 예측 불가능성. 긍정적인 변화의 시작을 의미합니다."
     },
-    // We'll add more card data later...
+    {
+        name: "The Magician",
+        image: "images/tarot-cards/the-magician.jpg",
+        interpretation: "능력, 의지력, 창의력, 기술, 숙련. 당신의 잠재력을 발휘하고 목표를 이룰 수 있는 능력이 충분합니다."
+    },
+    {
+        name: "The High Priestess",
+        image: "images/tarot-cards/the-high-priestess.jpg",
+        interpretation: "직관력, 통찰력, 비밀, 숨겨진 지식, 내면의 목소리.  당신의 직관을 믿고 내면의 지혜에 귀 기울이세요."
+    },
+    {
+        name: "The Emperor",
+        image: "images/tarot-cards/the-emperor.jpg",
+        interpretation: "권위, 통제력, 책임감, 안정, 질서, 구조.  리더십을 발휘하고 현실적인 문제 해결 능력이 뛰어납니다."
+    },
+    {
+        name: "The Lovers",
+        image: "images/tarot-cards/the-lovers.jpg",
+        interpretation: "사랑, 조화, 관계, 선택, 파트너십, 가치관의 일치. 중요한 결정을 내려야 할 시기이며, 사랑과 관계에 집중하세요."
+    },
+    // We can add even more cards later!
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
