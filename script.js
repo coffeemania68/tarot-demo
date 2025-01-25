@@ -66,12 +66,13 @@ document.addEventListener('DOMContentLoaded', () => { // **Open: DOMContentLoade
                 const readingSectionTitle = tarotReadingSection.querySelector('h2');
                 readingSectionTitle.textContent = "원 카드 리딩 (One Card Reading) - " + selectedCardData.name;
 
-                // --- Card Flip Animation ---
-                // cardBackElement.addEventListener('click', () => { // Add click listener to card back
-                //   cardBackElement.classList.add('rotate-y-180'); // Rotate card back away
-                //   cardFaceElement.classList.remove('rotate-y-180'); // Rotate card face forward
-                // }, { once: true }); // 'once: true' option to make the listener execute only once
+              // --- Card Flip Animation ---
+                cardBackElement.addEventListener('click', () => { // Add click listener to card back
+                    cardBackElement.classList.add('rotate-y-180'); // 카드 뒷면 회전 (이제 주석 해제됨)
+                    cardFaceElement.classList.remove('rotate-y-180'); // 카드 앞면 표시 (이제 주석 해제됨)
+                }, { once: true }); // 한 번만 실행되도록 설정 (이제 주석 해제됨)
                 // --- End Card Flip Animation ---
+                
             } // **Close: if (selectedSpread === 'one-card') block (5)**
         }); // **Close: spreadButton click listener (4)**
     }); // **Close: spreadButtons.forEach loop (3)**
