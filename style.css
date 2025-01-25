@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#card-back {
+    @apply rotate-y-0 !important; /* Ensure card back is initially facing forward */
+}
+
+#card-face {
+    @apply rotate-y-180 !important; /* Ensure card face is initially hidden */
+}
+
+#card-back img,
+#card-face img {
+    @apply object-contain; /* Ensure entire image is visible, maintain aspect ratio */
+}
