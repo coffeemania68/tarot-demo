@@ -1,3 +1,12 @@
+const tarotCardsData = [
+    {
+        name: "The Fool",
+        image: "images/tarot-cards/the-fool.jpg",
+        interpretation: "새로운 시작, 순수함, 가능성, 모험, 예측 불가능성. 긍정적인 변화의 시작을 의미합니다."
+    },
+    // We'll add more card data later...
+];
+
 document.addEventListener('DOMContentLoaded', () => {
     const tarotButton = document.querySelector('#main-section button');
     const mainSection = document.getElementById('main-section');
