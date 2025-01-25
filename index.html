@@ -56,9 +56,13 @@
     <h2 class="text-2xl font-semibold mb-4">원 카드 리딩 (One Card Reading)</h2>
 
     <div class="flex flex-col items-center"> <!-- Center content vertically and horizontally -->
-        <div id="card-area" class="w-64 h-96 bg-gray-800 rounded-lg shadow-lg mb-8 flex items-center justify-center">
-    <!-- Tarot Card Image -->
-    <img src="images/tarot-cards/the-fool.jpg" alt="The Fool Tarot Card" class="max-w-full max-h-full rounded-lg">
+        <div id="card-area" class="w-64 h-96 mb-8 relative perspective-500"> <!-- Added relative positioning and perspective -->
+    <div id="card-back" class="absolute inset-0 bg-gray-800 rounded-lg shadow-lg cursor-pointer backface-hidden transition-transform duration-500 rotate-y-0"> <!-- Card back -->
+        <img src="images/tarot-cards/card-back.jpg" alt="Tarot Card Back" class="max-w-full max-h-full rounded-lg block"> <!-- Card back image -->
+    </div>
+    <div id="card-face" class="absolute inset-0 rounded-lg shadow-lg backface-hidden transition-transform duration-500 rotate-y-180"> <!-- Card face (initially hidden) -->
+        <img src="" alt="Tarot Card" class="max-w-full max-h-full rounded-lg block"> <!-- Card face image (src will be set by JS) -->
+    </div>
 </div>
             <!-- Placeholder for Tarot Card Image -->
             <div class="text-white text-center">카드 이미지 영역</div>
