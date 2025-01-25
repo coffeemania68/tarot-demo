@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 //cardBackElement.addEventListener('click', () => { // Add click listener to card back
                   // cardBackElement.classList.remove('rotate-y-180'); // Force initial card-back rotation to 0
 cardFaceElement.classList.add('rotate-y-180');    
-                }, { once: true }); // 'once: true' option to make the listener execute only once
+               // }, { once: true }); // 'once: true' option to make the listener execute only once
                 // --- End Card Flip Animation ---
             }
       //  });
