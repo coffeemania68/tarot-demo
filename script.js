@@ -66,6 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const readingSectionTitle = tarotReadingSection.querySelector('h2');
                 readingSectionTitle.textContent = "원 카드 리딩 (One Card Reading) - " + selectedCardData.name;
 
+                console.log("Adding click listener to cardBackElement:", cardBackElement); // <-- ADD THIS LINE
+
                 // --- Card Flip Animation ---
                 cardBackElement.addEventListener('click', () => { // Add click listener to card back
                     cardBackElement.classList.add('rotate-y-180'); // Rotate card back away
