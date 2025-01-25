@@ -27,34 +27,47 @@ const tarotCardsData = [
     // We can add even more cards later!
 ];
 
-document.addEventListener('DOMContentLoaded', () => { // **Open: DOMContentLoaded event listener (1)**
+document.addEventListener('DOMContentLoaded', () => {
     const tarotButton = document.querySelector('#main-section button');
     const mainSection = document.getElementById('main-section');
     const tarotSelectionSection = document.getElementById('tarot-selection-section');
     const tarotReadingSection = document.getElementById('tarot-reading-section');
-    const spreadButtons = document.querySelectorAll('#tarot-selection-section button'); // Select all spread buttons
+    const spreadButtons = document.querySelectorAll('#tarot-selection-section button');
 
-    tarotButton.addEventListener('click', () => { // **Open: tarotButton click listener (2)**
+    // 카드 초기 상태 설정 함수
+    function resetCardState() {
+        const cardBackElement = document.getElementById('card-back');
+        const cardFaceElement = document.getElementById('card-face');
+        
+        cardBackElement.classList.remove('rotate-y-180'); // 카드 뒷면 초기화 (원래대로)
+        cardFaceElement.classList.add('rotate-y-180');    // 카드 앞면 숨김 (원래대로)
+    }
+
+    tarotButton.addEventListener('click', () => {
         mainSection.classList.add('hidden');
         tarotSelectionSection.classList.remove('hidden');
-        tarotReadingSection.classList.add('hidden'); // Initially hide reading section when selection screen is shown
-    }); // **Close: tarotButton click listener (2)**
+        tarotReadingSection.classList.add('hidden');
 
-    spreadButtons.forEach(button => { // **Open: spreadButtons.forEach loop (3)**
-        button.addEventListener('click', () => { // **Open: spreadButton click listener (4)**
+        // 메인 화면에서 타로 카드 선택 화면으로 넘어갈 때 카드 상태 초기화 (추가)
+        resetCardState(); 
+    });
+
+    spreadButtons.forEach(button => {
+        button.addEventListener('click', () => {
             const selectedSpread = button.dataset.spread;
             tarotSelectionSection.classList.add('hidden');
             tarotReadingSection.classList.remove('hidden');
 
-            console.log('Selected Spread:', selectedSpread);
-
-            if (selectedSpread === 'one-card') { // **Open: if (selectedSpread === 'one-card') block (5)**
+            if (selectedSpread === 'one-card') {
                 const cardArea = document.getElementById('card-area');
                 const interpretationArea = document.getElementById('interpretation-area');
                 const cardFaceElement = document.getElementById('card-face');
                 const cardBackElement = document.getElementById('card-back');
                 const cardFaceImageElement = cardFaceElement.querySelector('img');
                 const interpretationTextElement = interpretationArea.querySelector('p');
+
+                // 원 카드 리딩 화면으로 전환될 때마다 카드 상태 초기화 (추가 - 중요!)
+                resetCardState();
 
                 const randomIndex = Math.floor(Math.random() * tarotCardsData.length);
                 const selectedCardData = tarotCardsData[randomIndex];
@@ -66,14 +79,17 @@ document.addEventListener('DOMContentLoaded', () => { // **Open: DOMContentLoade
                 const readingSectionTitle = tarotReadingSection.querySelector('h2');
                 readingSectionTitle.textContent = "원 카드 리딩 (One Card Reading) - " + selectedCardData.name;
 
-              // --- Card Flip Animation ---
-                cardBackElement.addEventListener('click', () => { // Add click listener to card back
-                    cardBackElement.classList.add('rotate-y-180'); // 카드 뒷면 회전 (이제 주석 해제됨)
-                    cardFaceElement.classList.remove('rotate-y-180'); // 카드 앞면 표시 (이제 주석 해제됨)
-                }, { once: true }); // 한 번만 실행되도록 설정 (이제 주석 해제됨)
-                // --- End Card Flip Animation ---
-                
-            } // **Close: if (selectedSpread === 'one-card') block (5)**
-        }); // **Close: spreadButton click listener (4)**
-    }); // **Close: spreadButtons.forEach loop (3)**
-}); // **Close: DOMContentLoaded event listener (1)**
+                // 카드 뒤집기 이벤트 리스너 (수정: 함수 이름 명확하게, 이벤트 리스너 제거 방식 변경)
+                function flipCardOnce() {
+                    cardBackElement.classList.add('rotate-y-180');
+                    cardFaceElement.classList.remove('rotate-y-180');
+                    
+                    // 이벤트 리스너 제거 (수정: flipCardOnce 함수 자체를 제거)
+                    cardBackElement.removeEventListener('click', flipCardOnce);
+                }
+
+                cardBackElement.addEventListener('click', flipCardOnce, { once: true });
+            }
+        });
+    });
+});
