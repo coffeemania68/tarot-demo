@@ -52,11 +52,23 @@
     </div>
 </section>
 
-        <section id="tarot-reading-section" class="hidden py-10 bg-gray-700 rounded-lg p-8"> <!-- section 배경색, 둥근 모서리, padding 추가 -->
-            <h2>타로 카드 점 보기 (추후 디자인)</h2>
-            <p>여기에 타로 카드 점 보기 화면이 들어갈 예정입니다.</p>
-            <!-- 타로 카드 배치 영역, 카드 애니메이션, 해석 영역 등 -->
-        </section>
+        <section id="tarot-reading-section" class="hidden py-10 bg-gray-700 rounded-lg p-8">
+    <h2 class="text-2xl font-semibold mb-4">원 카드 리딩 (One Card Reading)</h2>
+
+    <div class="flex flex-col items-center"> <!-- Center content vertically and horizontally -->
+        <div id="card-area" class="w-64 h-96 bg-gray-800 rounded-lg shadow-lg mb-8 flex items-center justify-center">
+            <!-- Placeholder for Tarot Card Image -->
+            <div class="text-white text-center">카드 이미지 영역</div>
+        </div>
+
+        <div id="interpretation-area" class="text-center">
+            <h3 class="text-xl font-semibold mb-2">오늘의 운세</h3>
+            <p class="text-gray-300">
+                (여기에 오늘의 운세 해석 텍스트가 표시됩니다.)
+            </p>
+        </div>
+    </div>
+</section>
     </main>
 
     <script src="script.js"></script>
