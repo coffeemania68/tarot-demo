@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetCardState() {
         const cardBackElement = document.getElementById('card-back');
         const cardFaceElement = document.getElementById('card-face');
-        
+
         cardBackElement.classList.remove('rotate-y-180'); // 카드 뒷면 초기화 (원래대로)
         cardFaceElement.classList.add('rotate-y-180');    // 카드 앞면 숨김 (원래대로)
     }
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tarotReadingSection.classList.add('hidden');
 
         // 메인 화면에서 타로 카드 선택 화면으로 넘어갈 때 카드 상태 초기화 (추가)
-        resetCardState(); 
+        resetCardState();
     });
 
     spreadButtons.forEach(button => {
@@ -83,12 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 function flipCardOnce() {
                     cardBackElement.classList.add('rotate-y-180');
                     cardFaceElement.classList.remove('rotate-y-180');
-                    
+
                     // 이벤트 리스너 제거 (수정: flipCardOnce 함수 자체를 제거)
                     cardBackElement.removeEventListener('click', flipCardOnce);
                 }
 
-                cardBackElement.addEventListener('click', flipCardOnce, { once: true });
+                cardBackElement.addEventListener('click', flipCardOnce, { once: true }); // <-- ✅ 이 줄이 **최종적으로 남아야 하는 코드**입니다!
             }
         });
     });
