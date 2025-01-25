@@ -20,20 +20,30 @@ document.addEventListener('DOMContentLoaded', () => {
         tarotReadingSection.classList.add('hidden'); // Initially hide reading section when selection screen is shown
     });
 
-    spreadButtons.forEach(button => { // Loop through each spread button
-        button.addEventListener('click', () => {
-            const selectedSpread = button.dataset.spread; // Get the selected spread type from data-spread attribute
-            tarotSelectionSection.classList.add('hidden'); // Hide selection screen
-            tarotReadingSection.classList.remove('hidden'); // Show reading screen
+   spreadButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const selectedSpread = button.dataset.spread;
+        tarotSelectionSection.classList.add('hidden');
+        tarotReadingSection.classList.remove('hidden');
 
-            // For now, let's just log the selected spread to the console.
-            // We will use this 'selectedSpread' variable later to load the correct tarot reading layout.
-            console.log('Selected Spread:', selectedSpread);
+        console.log('Selected Spread:', selectedSpread);
 
-            // You can add more code here to:
-            // 1. Display the Tarot Reading Screen based on 'selectedSpread'
-            // 2. Load card images and interpretation texts for the selected spread
-            // 3. Implement card drawing and placement logic
-        });
+        if (selectedSpread === 'one-card') { // Check if One Card Draw is selected
+            const cardArea = document.getElementById('card-area');
+            const interpretationArea = document.getElementById('interpretation-area');
+            const cardImageElement = cardArea.querySelector('img'); // Get the <img> tag inside card-area
+            const interpretationTextElement = interpretationArea.querySelector('p'); // Get the <p> tag inside interpretation-area
+
+            const selectedCardData = tarotCardsData[0]; // For now, always pick the FIRST card in tarotCardsData (The Fool)
+
+            cardImageElement.src = selectedCardData.image; // Set the image source
+            cardImageElement.alt = selectedCardData.name + " Tarot Card"; // Set alt text
+            interpretationTextElement.textContent = selectedCardData.interpretation; // Set interpretation text
+
+            // Update section title to "원 카드 리딩 (One Card Reading)" (optional, but good for clarity)
+            const readingSectionTitle = tarotReadingSection.querySelector('h2');
+            readingSectionTitle.textContent = "원 카드 리딩 (One Card Reading) - " + selectedCardData.name;
+        }
     });
+ });
 });
