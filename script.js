@@ -54,8 +54,25 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardImageElement = cardArea.querySelector('img'); // Get the <img> tag inside card-area
             const interpretationTextElement = interpretationArea.querySelector('p'); // Get the <p> tag inside interpretation-area
 
-            const selectedCardData = tarotCardsData[0]; // For now, always pick the FIRST card in tarotCardsData (The Fool)
+           if (selectedSpread === 'one-card') {
+    const cardArea = document.getElementById('card-area');
+    const interpretationArea = document.getElementById('interpretation-area');
+    const cardImageElement = cardArea.querySelector('img');
+    const interpretationTextElement = interpretationArea.querySelector('p');
 
+    // --- Random Card Selection Logic ---
+    const randomIndex = Math.floor(Math.random() * tarotCardsData.length); // Generate a random index
+    const selectedCardData = tarotCardsData[randomIndex]; // Select card data using the random index
+    // --- End Random Card Selection Logic ---
+
+    cardImageElement.src = selectedCardData.image;
+    cardImageElement.alt = selectedCardData.name + " Tarot Card";
+    interpretationTextElement.textContent = selectedCardData.interpretation;
+
+    const readingSectionTitle = tarotReadingSection.querySelector('h2');
+    readingSectionTitle.textContent = "원 카드 리딩 (One Card Reading) - " + selectedCardData.name;
+}
+            
             cardImageElement.src = selectedCardData.image; // Set the image source
             cardImageElement.alt = selectedCardData.name + " Tarot Card"; // Set alt text
             interpretationTextElement.textContent = selectedCardData.interpretation; // Set interpretation text
