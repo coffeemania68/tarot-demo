@@ -57,8 +57,28 @@ document.addEventListener('DOMContentLoaded', () => {
            if (selectedSpread === 'one-card') {
     const cardArea = document.getElementById('card-area');
     const interpretationArea = document.getElementById('interpretation-area');
-    const cardImageElement = cardArea.querySelector('img');
+    const cardFaceElement = document.getElementById('card-face'); // Get card-face element
+    const cardBackElement = document.getElementById('card-back');   // Get card-back element
+    const cardFaceImageElement = cardFaceElement.querySelector('img'); // Image inside card-face
     const interpretationTextElement = interpretationArea.querySelector('p');
+
+    const randomIndex = Math.floor(Math.random() * tarotCardsData.length);
+    const selectedCardData = tarotCardsData[randomIndex];
+
+    cardFaceImageElement.src = selectedCardData.image; // Set card face image source
+    cardFaceImageElement.alt = selectedCardData.name + " Tarot Card";
+    interpretationTextElement.textContent = selectedCardData.interpretation;
+
+    const readingSectionTitle = tarotReadingSection.querySelector('h2');
+    readingSectionTitle.textContent = "원 카드 리딩 (One Card Reading) - " + selectedCardData.name;
+
+    // --- Card Flip Animation ---
+    cardBackElement.addEventListener('click', () => { // Add click listener to card back
+        cardBackElement.classList.add('rotate-y-180'); // Rotate card back away
+        cardFaceElement.classList.remove('rotate-y-180'); // Rotate card face forward
+    }, { once: true }); // 'once: true' option to make the listener execute only once
+    // --- End Card Flip Animation ---
+}
 
     // --- Random Card Selection Logic ---
     const randomIndex = Math.floor(Math.random() * tarotCardsData.length); // Generate a random index
