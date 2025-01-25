@@ -49,32 +49,32 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Selected Spread:', selectedSpread);
 
             if (selectedSpread === 'one-card') { // Check if One Card Draw is selected
-                const cardArea = document.getElementById('card-area');
-                const interpretationArea = document.getElementById('interpretation-area');
-                const cardFaceElement = document.getElementById('card-face'); // Get card-face element
-                const cardBackElement = document.getElementById('card-back');   // Get card-back element
-                const cardFaceImageElement = cardFaceElement.querySelector('img'); // Image inside card-face
-                const interpretationTextElement = interpretationArea.querySelector('p');
+                //const cardArea = document.getElementById('card-area');
+                //const interpretationArea = document.getElementById('interpretation-area');
+                //const cardFaceElement = document.getElementById('card-face'); // Get card-face element
+                //const cardBackElement = document.getElementById('card-back');   // Get card-back element
+                //const cardFaceImageElement = cardFaceElement.querySelector('img'); // Image inside card-face
+                //const interpretationTextElement = interpretationArea.querySelector('p');
 
-                const randomIndex = Math.floor(Math.random() * tarotCardsData.length);
-                const selectedCardData = tarotCardsData[randomIndex];
+                //const randomIndex = Math.floor(Math.random() * tarotCardsData.length);
+                //const selectedCardData = tarotCardsData[randomIndex];
 
-                cardFaceImageElement.src = selectedCardData.image; // Set card face image source
-                cardFaceImageElement.alt = selectedCardData.name + " Tarot Card";
-                interpretationTextElement.textContent = selectedCardData.interpretation;
+                //cardFaceImageElement.src = selectedCardData.image; // Set card face image source
+                //cardFaceImageElement.alt = selectedCardData.name + " Tarot Card";
+                //interpretationTextElement.textContent = selectedCardData.interpretation;
 
-                const readingSectionTitle = tarotReadingSection.querySelector('h2');
-                readingSectionTitle.textContent = "원 카드 리딩 (One Card Reading) - " + selectedCardData.name;
+                //const readingSectionTitle = tarotReadingSection.querySelector('h2');
+                //readingSectionTitle.textContent = "원 카드 리딩 (One Card Reading) - " + selectedCardData.name;
 
-                console.log("Adding click listener to cardBackElement:", cardBackElement); // <-- ADD THIS LINE
+                //console.log("Adding click listener to cardBackElement:", cardBackElement); // <-- ADD THIS LINE
 
                 // --- Card Flip Animation ---
-                cardBackElement.addEventListener('click', () => { // Add click listener to card back
-                   cardBackElement.classList.remove('rotate-y-180'); // Force initial card-back rotation to 0
+                //cardBackElement.addEventListener('click', () => { // Add click listener to card back
+                  // cardBackElement.classList.remove('rotate-y-180'); // Force initial card-back rotation to 0
 cardFaceElement.classList.add('rotate-y-180');    
                 }, { once: true }); // 'once: true' option to make the listener execute only once
                 // --- End Card Flip Animation ---
             }
-        });
-    });
-});
+      //  });
+   // });
+// });
